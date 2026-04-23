@@ -1,3 +1,14 @@
+import calcaNikePantSock from "@/assets/products/calca-nike-pant-sock.webp";
+import calcaNikeTribuna from "@/assets/products/calca-nike-tribuna.webp";
+import calcaAdidasEntrada from "@/assets/products/calca-adidas-entrada.webp";
+import calcaNikeLibero from "@/assets/products/calca-nike-libero.webp";
+import camisetaNikeGraphic from "@/assets/products/camiseta-nike-graphic.webp";
+import blusaoAdidasEntrada from "@/assets/products/blusao-adidas-entrada.webp";
+import blusaoNikeLiberoPreto from "@/assets/products/blusao-nike-libero-preto.webp";
+import blusaoNikeLiberoAzul from "@/assets/products/blusao-nike-libero-azul.webp";
+import blusaoKappaPreto from "@/assets/products/blusao-kappa-preto.webp";
+import blusaoKappaAzul from "@/assets/products/blusao-kappa-azul.webp";
+
 export type Category = "jaquetas" | "calcas" | "camisetas" | "calcados";
 export type Brand = "Nike" | "adidas" | "Oakley" | "Fila" | "Kappa";
 
