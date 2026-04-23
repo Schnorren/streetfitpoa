@@ -61,6 +61,7 @@ export const products: Product[] = [
     description:
       "Jaqueta esportiva da linha Entrada 22, ideal para treinos e dia a dia. Tecido leve, respirável e com acabamento moderno.",
     sizes: clothingSizes,
+    image: jaquetaAdidasEntradaCinza,
   },
   {
     id: "jaq-adidas-entrada-azul",
@@ -72,16 +73,19 @@ export const products: Product[] = [
     description:
       "Versão azul da clássica Entrada 22. Conforto, mobilidade e o estilo inconfundível das três listras.",
     sizes: clothingSizes,
+    image: jaquetaAdidasEntradaAzul,
   },
   {
     id: "jaq-oakley-mod",
-    name: "Jaqueta Corta Vento Oakley Mod",
+    name: "Jaqueta Oakley Camo Windbreaker Masculina",
     brand: "Oakley",
     category: "jaquetas",
     price: 180,
+    color: "Camo Verde",
     description:
-      "Corta-vento Oakley com pegada streetwear. Proteção contra o vento, leveza e visual urbano marcante.",
+      "Corta-vento Oakley com estampa camuflada, capuz e ziper frontal. Proteção contra o vento, leveza e visual urbano marcante.",
     sizes: clothingSizes,
+    image: jaquetaOakleyCamo,
   },
   {
     id: "jaq-oakley-travel-nomad",
@@ -93,6 +97,7 @@ export const products: Product[] = [
     description:
       "Jaqueta packable da Oakley — dobra dentro do próprio bolso. Perfeita para viagens e dias imprevisíveis.",
     sizes: clothingSizes,
+    image: jaquetaOakleyTravelNomad,
   },
   {
     id: "jaq-fila-puffer",
@@ -103,6 +108,7 @@ export const products: Product[] = [
     description:
       "Colete puffer Fila com enchimento térmico. Aquece sem pesar e finaliza qualquer look com atitude.",
     sizes: clothingSizes,
+    image: jaquetaFilaPuffer,
   },
   {
     id: "blu-adidas-entrada",
