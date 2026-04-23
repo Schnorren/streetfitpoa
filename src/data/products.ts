@@ -102,9 +102,11 @@ export const products: Product[] = [
     brand: "adidas",
     category: "jaquetas",
     price: 130,
+    color: "Preto",
     description:
       "Blusão Entrada 22 da adidas para treinos e ocasiões casuais. Tecido confortável e corte esportivo.",
     sizes: clothingSizes,
+    image: blusaoAdidasEntrada,
   },
   {
     id: "blu-nike-libero-capuz",
@@ -112,9 +114,23 @@ export const products: Product[] = [
     brand: "Nike",
     category: "jaquetas",
     price: 160,
+    color: "Preto",
     description:
       "Blusão Nike F.C. com tecnologia Dri-Fit que afasta a umidade. Capuz ajustável e estilo futebol-streetwear.",
     sizes: clothingSizes,
+    image: blusaoNikeLiberoPreto,
+  },
+  {
+    id: "blu-nike-libero-azul",
+    name: "Blusão Nike F.C. Libero Masculino",
+    brand: "Nike",
+    category: "jaquetas",
+    price: 160,
+    color: "Azul",
+    description:
+      "Versão azul do icônico blusão Nike F.C. com capuz. Estampa F.C. no peito e identidade futebol-streetwear.",
+    sizes: clothingSizes,
+    image: blusaoNikeLiberoAzul,
   },
   {
     id: "blu-kappa-heavy-1",
@@ -122,9 +138,11 @@ export const products: Product[] = [
     brand: "Kappa",
     category: "jaquetas",
     price: 90,
+    color: "Preto",
     description:
       "Blusão Kappa Heavy com capuz, tecido encorpado e logo da marca em destaque. Conforto e atitude italiana.",
     sizes: clothingSizes,
+    image: blusaoKappaPreto,
   },
   {
     id: "blu-kappa-heavy-2",
@@ -132,9 +150,11 @@ export const products: Product[] = [
     brand: "Kappa",
     category: "jaquetas",
     price: 90,
+    color: "Azul Marinho",
     description:
-      "Outra opção do clássico blusão Kappa Heavy, ideal para temperaturas mais baixas.",
+      "Versão azul marinho do clássico Kappa Heavy. Capuz, meio zíper e tecido encorpado.",
     sizes: clothingSizes,
+    image: blusaoKappaAzul,
   },
 
   // Calças
@@ -147,6 +167,7 @@ export const products: Product[] = [
     description:
       "Calça esportiva Entrada 22 com corte slim, três listras laterais e cordão de ajuste na cintura.",
     sizes: clothingSizes,
+    image: calcaAdidasEntrada,
   },
   {
     id: "cal-nike-tribuna",
@@ -157,6 +178,7 @@ export const products: Product[] = [
     description:
       "Calça Nike F.C. Tribuna com punho tipo meião, ajuste perfeito e visual de quem entende de futebol.",
     sizes: clothingSizes,
+    image: calcaNikeTribuna,
   },
   {
     id: "cal-nike-pant-sock",
@@ -167,6 +189,18 @@ export const products: Product[] = [
     description:
       "Calça Nike F.C. com punho sock cuff. Caimento moderno, ideal para treino ou rolês casuais.",
     sizes: clothingSizes,
+    image: calcaNikePantSock,
+  },
+  {
+    id: "cal-nike-libero",
+    name: "Calça Nike F.C. Dri-Fit Libero Pant K",
+    brand: "Nike",
+    category: "calcas",
+    price: 190,
+    description:
+      "Calça Nike F.C. Dri-Fit Libero. Tecnologia que afasta o suor, caimento confortável e estilo Nike F.C.",
+    sizes: clothingSizes,
+    image: calcaNikeLibero,
   },
 
   // Camisetas
@@ -179,6 +213,7 @@ export const products: Product[] = [
     description:
       "Camiseta Nike F.C. com estampa gráfica sazonal. Algodão macio e estilo futebol streetwear.",
     sizes: clothingSizes,
+    image: camisetaNikeGraphic,
   },
 
   // Calçados
