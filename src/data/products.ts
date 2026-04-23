@@ -3,11 +3,19 @@ import calcaNikeTribuna from "@/assets/products/calca-nike-tribuna.webp";
 import calcaAdidasEntrada from "@/assets/products/calca-adidas-entrada.webp";
 import calcaNikeLibero from "@/assets/products/calca-nike-libero.webp";
 import camisetaNikeGraphic from "@/assets/products/camiseta-nike-graphic.webp";
+import camisetaNikeLiberoCamo from "@/assets/products/camiseta-nike-libero-camo.webp";
+import camisetaNikeSeasonalGlobo from "@/assets/products/camiseta-nike-seasonal-globo.webp";
 import blusaoAdidasEntrada from "@/assets/products/blusao-adidas-entrada.webp";
 import blusaoNikeLiberoPreto from "@/assets/products/blusao-nike-libero-preto.webp";
 import blusaoNikeLiberoAzul from "@/assets/products/blusao-nike-libero-azul.webp";
 import blusaoKappaPreto from "@/assets/products/blusao-kappa-preto.webp";
 import blusaoKappaAzul from "@/assets/products/blusao-kappa-azul.webp";
+import jaquetaAdidasEntradaCinza from "@/assets/products/jaqueta-adidas-entrada-cinza.webp";
+import jaquetaAdidasEntradaAzul from "@/assets/products/jaqueta-adidas-entrada-azul.webp";
+import jaquetaOakleyCamo from "@/assets/products/jaqueta-oakley-camo.webp";
+import jaquetaOakleyTravelNomad from "@/assets/products/jaqueta-oakley-travel-nomad.webp";
+import jaquetaFilaPuffer from "@/assets/products/jaqueta-fila-puffer.webp";
+import tenisAdidasLiteRacer from "@/assets/products/tenis-adidas-lite-racer.webp";
 
 export type Category = "jaquetas" | "calcas" | "camisetas" | "calcados";
 export type Brand = "Nike" | "adidas" | "Oakley" | "Fila" | "Kappa";
@@ -53,6 +61,7 @@ export const products: Product[] = [
     description:
       "Jaqueta esportiva da linha Entrada 22, ideal para treinos e dia a dia. Tecido leve, respirável e com acabamento moderno.",
     sizes: clothingSizes,
+    image: jaquetaAdidasEntradaCinza,
   },
   {
     id: "jaq-adidas-entrada-azul",
@@ -64,16 +73,19 @@ export const products: Product[] = [
     description:
       "Versão azul da clássica Entrada 22. Conforto, mobilidade e o estilo inconfundível das três listras.",
     sizes: clothingSizes,
+    image: jaquetaAdidasEntradaAzul,
   },
   {
     id: "jaq-oakley-mod",
-    name: "Jaqueta Corta Vento Oakley Mod",
+    name: "Jaqueta Oakley Camo Windbreaker Masculina",
     brand: "Oakley",
     category: "jaquetas",
     price: 180,
+    color: "Camo Verde",
     description:
-      "Corta-vento Oakley com pegada streetwear. Proteção contra o vento, leveza e visual urbano marcante.",
+      "Corta-vento Oakley com estampa camuflada, capuz e ziper frontal. Proteção contra o vento, leveza e visual urbano marcante.",
     sizes: clothingSizes,
+    image: jaquetaOakleyCamo,
   },
   {
     id: "jaq-oakley-travel-nomad",
@@ -85,6 +97,7 @@ export const products: Product[] = [
     description:
       "Jaqueta packable da Oakley — dobra dentro do próprio bolso. Perfeita para viagens e dias imprevisíveis.",
     sizes: clothingSizes,
+    image: jaquetaOakleyTravelNomad,
   },
   {
     id: "jaq-fila-puffer",
@@ -95,6 +108,7 @@ export const products: Product[] = [
     description:
       "Colete puffer Fila com enchimento térmico. Aquece sem pesar e finaliza qualquer look com atitude.",
     sizes: clothingSizes,
+    image: jaquetaFilaPuffer,
   },
   {
     id: "blu-adidas-entrada",
@@ -210,8 +224,33 @@ export const products: Product[] = [
     brand: "Nike",
     category: "camisetas",
     price: 125,
+    color: "Cinza",
     description:
-      "Camiseta Nike F.C. com estampa gráfica sazonal. Algodão macio e estilo futebol streetwear.",
+      "Camiseta Nike F.C. Graphic Seasonal com estampa do globo em verde neon. Algodão macio e identidade futebol streetwear.",
+    sizes: clothingSizes,
+    image: camisetaNikeSeasonalGlobo,
+  },
+  {
+    id: "cam-nike-libero-camo",
+    name: "Camiseta Nike Manga Curta Dri-Fit F.C. Libero T",
+    brand: "Nike",
+    category: "camisetas",
+    price: 125,
+    color: "Camuflada",
+    description:
+      "Camiseta Nike F.C. Libero com estampa camo all-over e tecnologia Dri-Fit. Estilo militar com pegada esportiva.",
+    sizes: clothingSizes,
+    image: camisetaNikeLiberoCamo,
+  },
+  {
+    id: "cam-nike-fc-tee-seasonal",
+    name: "Camiseta Nike F.C. Manga Curta Tee Seasonal",
+    brand: "Nike",
+    category: "camisetas",
+    price: 125,
+    color: "Preta",
+    description:
+      "Camiseta Nike F.C. com estampa frontal NIKE F.C. em destaque. Algodão premium e visual streetwear marcante.",
     sizes: clothingSizes,
     image: camisetaNikeGraphic,
   },
@@ -226,5 +265,6 @@ export const products: Product[] = [
     description:
       "Tênis adidas Lite Racer Rebold feminino. Leveza, conforto e visual versátil para o dia a dia.",
     sizes: shoeSizes,
+    image: tenisAdidasLiteRacer,
   },
 ];
