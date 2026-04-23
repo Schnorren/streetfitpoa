@@ -13,12 +13,23 @@ export default {
       },
     },
     extend: {
+      fontFamily: {
+        sans: ['Inter', 'system-ui', 'sans-serif'],
+        display: ['"Bebas Neue"', 'Inter', 'sans-serif'],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
+        brand: {
+          nike: "hsl(var(--brand-nike))",
+          adidas: "hsl(var(--brand-adidas))",
+          oakley: "hsl(var(--brand-oakley))",
+          fila: "hsl(var(--brand-fila))",
+          kappa: "hsl(var(--brand-kappa))",
+        },
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
