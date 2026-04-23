@@ -224,8 +224,33 @@ export const products: Product[] = [
     brand: "Nike",
     category: "camisetas",
     price: 125,
+    color: "Cinza",
     description:
-      "Camiseta Nike F.C. com estampa gráfica sazonal. Algodão macio e estilo futebol streetwear.",
+      "Camiseta Nike F.C. Graphic Seasonal com estampa do globo em verde neon. Algodão macio e identidade futebol streetwear.",
+    sizes: clothingSizes,
+    image: camisetaNikeSeasonalGlobo,
+  },
+  {
+    id: "cam-nike-libero-camo",
+    name: "Camiseta Nike Manga Curta Dri-Fit F.C. Libero T",
+    brand: "Nike",
+    category: "camisetas",
+    price: 125,
+    color: "Camuflada",
+    description:
+      "Camiseta Nike F.C. Libero com estampa camo all-over e tecnologia Dri-Fit. Estilo militar com pegada esportiva.",
+    sizes: clothingSizes,
+    image: camisetaNikeLiberoCamo,
+  },
+  {
+    id: "cam-nike-fc-tee-seasonal",
+    name: "Camiseta Nike F.C. Manga Curta Tee Seasonal",
+    brand: "Nike",
+    category: "camisetas",
+    price: 125,
+    color: "Preta",
+    description:
+      "Camiseta Nike F.C. com estampa frontal NIKE F.C. em destaque. Algodão premium e visual streetwear marcante.",
     sizes: clothingSizes,
     image: camisetaNikeGraphic,
   },
@@ -240,5 +265,6 @@ export const products: Product[] = [
     description:
       "Tênis adidas Lite Racer Rebold feminino. Leveza, conforto e visual versátil para o dia a dia.",
     sizes: shoeSizes,
+    image: tenisAdidasLiteRacer,
   },
 ];
