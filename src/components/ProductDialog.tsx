@@ -1,4 +1,4 @@
-import { Product } from "@/data/products";
+import { Product, availableSizes, totalStock } from "@/data/products";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Badge } from "@/components/ui/badge";
 import { Shirt } from "lucide-react";
@@ -11,6 +11,10 @@ interface Props {
 
 export const ProductDialog = ({ product, open, onOpenChange }: Props) => {
   if (!product) return null;
+  const hasStockInfo = product.stock !== undefined;
+  const sizes = hasStockInfo ? availableSizes(product) : product.sizes;
+  const total = totalStock(product);
+  const outOfStock = hasStockInfo && sizes.length === 0;
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="max-w-3xl overflow-hidden border-border/70 bg-card p-0">
@@ -56,18 +60,36 @@ export const ProductDialog = ({ product, open, onOpenChange }: Props) => {
 
             <div>
               <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-                Tamanhos disponíveis
+                {hasStockInfo
+                  ? outOfStock
+                    ? "Estoque"
+                    : `Tamanhos disponíveis (${total} em estoque)`
+                  : "Tamanhos disponíveis"}
               </p>
-              <div className="flex flex-wrap gap-2">
-                {product.sizes.map((s) => (
-                  <span
-                    key={s}
-                    className="min-w-[2.5rem] rounded-md border border-border/70 bg-background px-3 py-2 text-center text-sm font-semibold text-foreground"
-                  >
-                    {s}
-                  </span>
-                ))}
-              </div>
+              {outOfStock ? (
+                <p className="rounded-md border border-border/70 bg-background px-3 py-2 text-sm font-semibold text-muted-foreground">
+                  Esgotado
+                </p>
+              ) : (
+                <div className="flex flex-wrap gap-2">
+                  {sizes.map((s) => {
+                    const qty = product.stock?.[s];
+                    return (
+                      <span
+                        key={s}
+                        className="flex min-w-[2.5rem] flex-col items-center rounded-md border border-border/70 bg-background px-3 py-2 text-center font-semibold text-foreground"
+                      >
+                        <span className="text-sm leading-none">{s}</span>
+                        {qty !== undefined && (
+                          <span className="mt-1 text-[10px] font-medium text-primary">
+                            {qty} un.
+                          </span>
+                        )}
+                      </span>
+                    );
+                  })}
+                </div>
+              )}
             </div>
 
             <p className="mt-auto text-xs text-muted-foreground">
