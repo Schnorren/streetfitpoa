@@ -76,6 +76,7 @@ export const products: Product[] = [
       "Jaqueta esportiva da linha Entrada 22, ideal para treinos e dia a dia. Tecido leve, respirável e com acabamento moderno.",
     sizes: clothingSizes,
     image: jaquetaAdidasEntradaCinza,
+    stock: { G: 3 },
   },
   {
     id: "jaq-adidas-entrada-azul",
@@ -88,6 +89,7 @@ export const products: Product[] = [
       "Versão azul da clássica Entrada 22. Conforto, mobilidade e o estilo inconfundível das três listras.",
     sizes: clothingSizes,
     image: jaquetaAdidasEntradaAzul,
+    stock: { G: 1 },
   },
   {
     id: "jaq-oakley-mod",
@@ -98,8 +100,9 @@ export const products: Product[] = [
     color: "Camo Verde",
     description:
       "Corta-vento Oakley com estampa camuflada, capuz e ziper frontal. Proteção contra o vento, leveza e visual urbano marcante.",
-    sizes: clothingSizes,
+    sizes: [...clothingSizes, "XG"],
     image: jaquetaOakleyCamo,
+    stock: { P: 2 },
   },
   {
     id: "jaq-oakley-travel-nomad",
@@ -110,8 +113,9 @@ export const products: Product[] = [
     color: "Preto + Amarelo",
     description:
       "Jaqueta packable da Oakley — dobra dentro do próprio bolso. Perfeita para viagens e dias imprevisíveis.",
-    sizes: clothingSizes,
+    sizes: [...clothingSizes, "XG"],
     image: jaquetaOakleyTravelNomad,
+    stock: { M: 14, XG: 10 },
   },
   {
     id: "jaq-fila-puffer",
@@ -123,6 +127,7 @@ export const products: Product[] = [
       "Colete puffer Fila com enchimento térmico. Aquece sem pesar e finaliza qualquer look com atitude.",
     sizes: clothingSizes,
     image: jaquetaFilaPuffer,
+    stock: { M: 1 },
   },
   {
     id: "blu-adidas-entrada",
@@ -135,6 +140,7 @@ export const products: Product[] = [
       "Blusão Entrada 22 da adidas para treinos e ocasiões casuais. Tecido confortável e corte esportivo.",
     sizes: clothingSizes,
     image: blusaoAdidasEntrada,
+    stock: { G: 3 },
   },
   {
     id: "blu-nike-libero-capuz",
@@ -147,6 +153,7 @@ export const products: Product[] = [
       "Blusão Nike F.C. com tecnologia Dri-Fit que afasta a umidade. Capuz ajustável e estilo futebol-streetwear.",
     sizes: clothingSizes,
     image: blusaoNikeLiberoPreto,
+    stock: { P: 4, M: 21, G: 12 },
   },
   {
     id: "blu-nike-libero-azul",
@@ -159,6 +166,7 @@ export const products: Product[] = [
       "Versão azul do icônico blusão Nike F.C. com capuz. Estampa F.C. no peito e identidade futebol-streetwear.",
     sizes: clothingSizes,
     image: blusaoNikeLiberoAzul,
+    stock: { M: 2 },
   },
   {
     id: "blu-kappa-heavy-1",
@@ -171,6 +179,7 @@ export const products: Product[] = [
       "Blusão Kappa Heavy com capuz, tecido encorpado e logo da marca em destaque. Conforto e atitude italiana.",
     sizes: clothingSizes,
     image: blusaoKappaPreto,
+    stock: { G: 1 },
   },
   {
     id: "blu-kappa-heavy-2",
@@ -183,6 +192,7 @@ export const products: Product[] = [
       "Versão azul marinho do clássico Kappa Heavy. Capuz, meio zíper e tecido encorpado.",
     sizes: clothingSizes,
     image: blusaoKappaAzul,
+    stock: { G: 3 },
   },
 
   // Calças
@@ -207,6 +217,7 @@ export const products: Product[] = [
       "Calça Nike F.C. Tribuna com punho tipo meião, ajuste perfeito e visual de quem entende de futebol.",
     sizes: clothingSizes,
     image: calcaNikeTribuna,
+    stock: { M: 6, G: 4 },
   },
   {
     id: "cal-nike-pant-sock",
@@ -218,6 +229,7 @@ export const products: Product[] = [
       "Calça Nike F.C. com punho sock cuff. Caimento moderno, ideal para treino ou rolês casuais.",
     sizes: clothingSizes,
     image: calcaNikePantSock,
+    stock: { G: 1 },
   },
   {
     id: "cal-nike-libero",
@@ -243,6 +255,7 @@ export const products: Product[] = [
       "Camiseta Nike F.C. Graphic Seasonal com estampa do globo em verde neon. Algodão macio e identidade futebol streetwear.",
     sizes: clothingSizes,
     image: camisetaNikeSeasonalGlobo,
+    stock: { M: 2, G: 4 },
   },
   {
     id: "cam-nike-libero-camo",
@@ -267,6 +280,7 @@ export const products: Product[] = [
       "Camiseta Nike F.C. com estampa frontal NIKE F.C. em destaque. Algodão premium e visual streetwear marcante.",
     sizes: clothingSizes,
     image: camisetaNikeGraphic,
+    stock: { M: 3, G: 7 },
   },
 
   // Calçados
