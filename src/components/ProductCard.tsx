@@ -50,11 +50,7 @@ export const ProductCard = ({ product, onClick }: Props) => {
             Esgotado
           </div>
         )}
-        {!outOfStock && total !== null && (
-          <Badge className="absolute right-3 top-3 bg-background/80 text-[10px] font-semibold uppercase tracking-wider text-foreground">
-            {total} em estoque
-          </Badge>
-        )}
+        {/* estoque total oculto a pedido */}
       </div>
 
       <div className="space-y-3 p-4">
