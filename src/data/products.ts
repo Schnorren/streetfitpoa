@@ -30,6 +30,8 @@ export interface Product {
   sizes: string[];
   color?: string;
   image?: string;
+  /** Estoque por tamanho. Tamanhos ausentes = sem estoque. */
+  stock?: Record<string, number>;
 }
 
 export const categoryLabels: Record<Category, string> = {
@@ -48,6 +50,18 @@ export const categoryEmoji: Record<Category, string> = {
 
 const clothingSizes = ["P", "M", "G", "GG"];
 const shoeSizes = ["36", "37", "38", "39", "40"];
+
+/** Helper: retorna apenas os tamanhos com estoque > 0. */
+export const availableSizes = (p: Product): string[] => {
+  if (!p.stock) return p.sizes;
+  return p.sizes.filter((s) => (p.stock?.[s] ?? 0) > 0);
+};
+
+/** Helper: total em estoque do produto. */
+export const totalStock = (p: Product): number | null => {
+  if (!p.stock) return null;
+  return Object.values(p.stock).reduce((a, b) => a + b, 0);
+};
 
 export const products: Product[] = [
   // Jaquetas & Blusões
