@@ -1,4 +1,4 @@
-import { Product } from "@/data/products";
+import { Product, availableSizes, totalStock } from "@/data/products";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Shirt } from "lucide-react";
@@ -17,6 +17,9 @@ const brandClass: Record<string, string> = {
 };
 
 export const ProductCard = ({ product, onClick }: Props) => {
+  const sizes = availableSizes(product);
+  const total = totalStock(product);
+  const outOfStock = product.stock !== undefined && sizes.length === 0;
   return (
     <Card
       onClick={onClick}
@@ -28,7 +31,9 @@ export const ProductCard = ({ product, onClick }: Props) => {
             src={product.image}
             alt={product.name}
             loading="lazy"
-            className="h-full w-full object-cover transition-smooth group-hover:scale-105"
+            className={`h-full w-full object-cover transition-smooth group-hover:scale-105 ${
+              outOfStock ? "opacity-40 grayscale" : ""
+            }`}
           />
         ) : (
           <div className="flex h-full w-full items-center justify-center bg-secondary text-muted-foreground">
@@ -40,6 +45,16 @@ export const ProductCard = ({ product, onClick }: Props) => {
         >
           {product.brand}
         </Badge>
+        {outOfStock && (
+          <div className="absolute inset-x-0 bottom-0 bg-background/80 py-1 text-center text-[10px] font-bold uppercase tracking-widest text-muted-foreground">
+            Esgotado
+          </div>
+        )}
+        {!outOfStock && total !== null && (
+          <Badge className="absolute right-3 top-3 bg-background/80 text-[10px] font-semibold uppercase tracking-wider text-foreground">
+            {total} em estoque
+          </Badge>
+        )}
       </div>
 
       <div className="space-y-3 p-4">
@@ -60,7 +75,7 @@ export const ProductCard = ({ product, onClick }: Props) => {
             </p>
           </div>
           <div className="flex flex-wrap justify-end gap-1">
-            {product.sizes.slice(0, 4).map((s) => (
+            {(sizes.length > 0 ? sizes : product.sizes).slice(0, 4).map((s) => (
               <span
                 key={s}
                 className="rounded border border-border/70 px-1.5 py-0.5 text-[10px] font-semibold text-muted-foreground"
