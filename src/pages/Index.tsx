@@ -1,16 +1,18 @@
 import { useMemo, useState } from "react";
-import { Search, Zap } from "lucide-react";
+import { Search, Zap, Lock } from "lucide-react";
+import { Link } from "react-router-dom";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { ProductCard } from "@/components/ProductCard";
 import { ProductDialog } from "@/components/ProductDialog";
+import { useProducts } from "@/hooks/useProducts";
+import { useAuth } from "@/hooks/useAuth";
 import {
-  products,
   Product,
   Category,
   categoryLabels,
   categoryEmoji,
-} from "@/data/products";
+} from "@/types/product";
 
 type Filter = "todos" | Category;
 
@@ -23,6 +25,8 @@ const filters: { id: Filter; label: string }[] = [
 ];
 
 const Index = () => {
+  const { products, loading } = useProducts();
+  const { isAdmin } = useAuth();
   const [filter, setFilter] = useState<Filter>("todos");
   const [search, setSearch] = useState("");
   const [selected, setSelected] = useState<Product | null>(null);
@@ -37,7 +41,7 @@ const Index = () => {
         p.brand.toLowerCase().includes(search.toLowerCase());
       return matchesCategory && matchesSearch;
     });
-  }, [filter, search]);
+  }, [products, filter, search]);
 
   const grouped = useMemo(() => {
     if (filter !== "todos") return null;
@@ -56,7 +60,6 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Header */}
       <header className="sticky top-0 z-30 border-b border-border/60 bg-background/85 backdrop-blur-md">
         <div className="container flex items-center justify-between gap-4 py-4">
           <a href="#" className="flex items-center gap-2">
@@ -75,11 +78,17 @@ const Index = () => {
                 {f.label}
               </button>
             ))}
+            <Link
+              to={isAdmin ? "/admin" : "/auth"}
+              className="flex items-center gap-1 text-xs font-bold uppercase tracking-wider text-muted-foreground transition-smooth hover:text-primary"
+            >
+              <Lock className="h-3.5 w-3.5" />
+              {isAdmin ? "Admin" : "Entrar"}
+            </Link>
           </nav>
         </div>
       </header>
 
-      {/* Hero */}
       <section className="relative overflow-hidden border-b border-border/60 bg-gradient-hero">
         <div className="container relative py-16 md:py-24">
           <p className="mb-3 text-xs font-bold uppercase tracking-[0.3em] text-primary">
@@ -106,7 +115,6 @@ const Index = () => {
         <div className="pointer-events-none absolute -right-32 -top-32 h-96 w-96 rounded-full bg-primary/20 blur-3xl" />
       </section>
 
-      {/* Filters */}
       <section className="sticky top-[65px] z-20 border-b border-border/60 bg-background/95 backdrop-blur">
         <div className="container flex flex-col gap-3 py-4 md:flex-row md:items-center md:justify-between">
           <div className="flex flex-wrap gap-2">
@@ -138,15 +146,13 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Catalog */}
       <main className="container py-10 md:py-14">
-        {filtered.length === 0 ? (
+        {loading ? (
+          <div className="py-20 text-center text-muted-foreground">Carregando catálogo...</div>
+        ) : filtered.length === 0 ? (
           <div className="py-20 text-center">
             <p className="font-display text-3xl text-muted-foreground">
               Nenhuma peça encontrada
-            </p>
-            <p className="mt-2 text-sm text-muted-foreground">
-              Tente outro termo ou categoria.
             </p>
           </div>
         ) : grouped ? (
@@ -168,11 +174,7 @@ const Index = () => {
                     </div>
                     <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
                       {list.map((p) => (
-                        <ProductCard
-                          key={p.id}
-                          product={p}
-                          onClick={() => handleSelect(p)}
-                        />
+                        <ProductCard key={p.id} product={p} onClick={() => handleSelect(p)} />
                       ))}
                     </div>
                   </section>
@@ -183,17 +185,12 @@ const Index = () => {
         ) : (
           <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
             {filtered.map((p) => (
-              <ProductCard
-                key={p.id}
-                product={p}
-                onClick={() => handleSelect(p)}
-              />
+              <ProductCard key={p.id} product={p} onClick={() => handleSelect(p)} />
             ))}
           </div>
         )}
       </main>
 
-      {/* Footer */}
       <footer className="border-t border-border/60 bg-secondary/30">
         <div className="container flex flex-col items-center justify-between gap-3 py-6 md:flex-row">
           <p className="font-display text-lg tracking-wider text-foreground">
