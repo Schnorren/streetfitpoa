@@ -1,4 +1,4 @@
-import { Product, availableSizes, totalStock } from "@/data/products";
+import { Product, availableSizes, hasStockInfo } from "@/types/product";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Shirt } from "lucide-react";
@@ -18,17 +18,16 @@ const brandClass: Record<string, string> = {
 
 export const ProductCard = ({ product, onClick }: Props) => {
   const sizes = availableSizes(product);
-  const total = totalStock(product);
-  const outOfStock = product.stock !== undefined && sizes.length === 0;
+  const outOfStock = hasStockInfo(product) && sizes.length === 0;
   return (
     <Card
       onClick={onClick}
       className="group cursor-pointer overflow-hidden border-border/60 bg-gradient-card shadow-card transition-smooth hover:border-primary/60 hover:shadow-glow"
     >
       <div className="relative aspect-square overflow-hidden bg-secondary">
-        {product.image ? (
+        {product.image_url ? (
           <img
-            src={product.image}
+            src={product.image_url}
             alt={product.name}
             loading="lazy"
             className={`h-full w-full object-cover transition-smooth group-hover:scale-105 ${
