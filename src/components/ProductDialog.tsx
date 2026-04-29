@@ -1,4 +1,4 @@
-import { Product, availableSizes, totalStock } from "@/data/products";
+import { Product, availableSizes, hasStockInfo } from "@/types/product";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Badge } from "@/components/ui/badge";
 import { Shirt } from "lucide-react";
@@ -11,17 +11,16 @@ interface Props {
 
 export const ProductDialog = ({ product, open, onOpenChange }: Props) => {
   if (!product) return null;
-  const hasStockInfo = product.stock !== undefined;
-  const sizes = hasStockInfo ? availableSizes(product) : product.sizes;
-  const total = totalStock(product);
-  const outOfStock = hasStockInfo && sizes.length === 0;
+  const hasStock = hasStockInfo(product);
+  const sizes = hasStock ? availableSizes(product) : product.sizes;
+  const outOfStock = hasStock && sizes.length === 0;
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="max-w-3xl overflow-hidden border-border/70 bg-card p-0">
         <div className="grid gap-0 md:grid-cols-2">
           <div className="relative aspect-square bg-secondary md:aspect-auto">
-            {product.image ? (
-              <img src={product.image} alt={product.name} className="h-full w-full object-cover" />
+            {product.image_url ? (
+              <img src={product.image_url} alt={product.name} className="h-full w-full object-cover" />
             ) : (
               <div className="flex h-full w-full items-center justify-center">
                 <Shirt className="h-32 w-32 text-muted-foreground/30" strokeWidth={1} />
@@ -60,7 +59,7 @@ export const ProductDialog = ({ product, open, onOpenChange }: Props) => {
 
             <div>
               <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-                {hasStockInfo && outOfStock ? "Estoque" : "Tamanhos disponíveis"}
+                {hasStock && outOfStock ? "Estoque" : "Tamanhos disponíveis"}
               </p>
               {outOfStock ? (
                 <p className="rounded-md border border-border/70 bg-background px-3 py-2 text-sm font-semibold text-muted-foreground">
