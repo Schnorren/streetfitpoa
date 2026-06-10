@@ -25,32 +25,43 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const { data: sub } = supabase.auth.onAuthStateChange((_e, s) => {
+    const applySession = async (s: Session | null) => {
+      setLoading(true);
       setSession(s);
       setUser(s?.user ?? null);
-      if (s?.user) {
-        setTimeout(() => checkAdmin(s.user.id), 0);
-      } else {
+
+      if (!s?.user) {
         setIsAdmin(false);
+        setLoading(false);
+        return;
       }
+
+      const admin = await checkAdmin(s.user.id);
+      setIsAdmin(admin);
+      setLoading(false);
+    };
+
+    const { data: sub } = supabase.auth.onAuthStateChange((_e, s) => {
+      setTimeout(() => applySession(s), 0);
     });
     supabase.auth.getSession().then(({ data: { session: s } }) => {
-      setSession(s);
-      setUser(s?.user ?? null);
-      if (s?.user) checkAdmin(s.user.id);
-      setLoading(false);
+      applySession(s);
     });
     return () => sub.subscription.unsubscribe();
   }, []);
 
   const checkAdmin = async (uid: string) => {
-    const { data } = await supabase
+    const { data, error } = await supabase
       .from("user_roles")
       .select("role")
       .eq("user_id", uid)
       .eq("role", "admin")
       .maybeSingle();
-    setIsAdmin(!!data);
+    if (error) {
+      console.error("Erro ao verificar permissão admin:", error);
+      return false;
+    }
+    return !!data;
   };
 
   const signOut = async () => {
